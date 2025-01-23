@@ -26,15 +26,18 @@ func (s *candidateService) GetAllCandidates() ([]models.Candidate, error) {
 
 func (s *candidateService) VoteForCandidate(id uint) error {
 	candidate, err := s.repo.FindByID(id)
-	if err != nil {
+	if err != nil || candidate == nil {
 		return errors.New("candidato não encontrado")
 	}
 
-	if candidate == nil {
-		return errors.New("candidato não encontrado")
-	}
+	go func() {
+		err := s.repo.AddVote(id)
+		if err != nil {
+			errors.New("Erro ao adicionar voto para o candidato")
+		}
+	}()
 
-	return s.repo.AddVote(id)
+	return nil
 }
 
 func (s *candidateService) GetCandidateVotes(id uint) (int, error) {
