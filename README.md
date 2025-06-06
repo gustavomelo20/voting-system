@@ -11,12 +11,13 @@ Um sistema simples de votação construído em Go, utilizando o framework Echo p
 - Obter resultados da votação
 
 ## Estrutura do Projeto
-
+````
 ├── controllers/ # Lógica dos endpoints (ex: candidate_controller.go)
 ├── models/ # Estrutura dos dados (Candidate, Vote, etc.)
 ├── routes/ # Definição das rotas e handlers
 ├── main.go # Inicialização da aplicação
 └── go.mod # Gerenciamento de dependências
+````
 
 ## Tecnologias
 
@@ -30,3 +31,4 @@ Um sistema simples de votação construído em Go, utilizando o framework Echo p
 git clone https://github.com/gustavomelo20/voting-system.git
 cd voting-system
 go run main.go
+```
